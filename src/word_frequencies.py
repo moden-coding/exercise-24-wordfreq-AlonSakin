@@ -1,10 +1,20 @@
 #!/usr/bin/env python3
 
 def word_frequencies(filename):
-    pass
+    with open(filename, 'r') as f:
+        words = list(map(lambda s: s.strip("!\"#$%&'()*,-./:;?@[]_"), f.read().split()))
+
+        frequencies = {}
+
+        unique_words = set(words)
+        for word in unique_words:
+            frequencies[word] = words.count(word)
+    return frequencies
+
 
 def main():
-    d = word_frequencies("src/alice.txt"))
+    d = word_frequencies("src/alice.txt")
+    print(d)
 
 
     #if d["creating"] != 3:
